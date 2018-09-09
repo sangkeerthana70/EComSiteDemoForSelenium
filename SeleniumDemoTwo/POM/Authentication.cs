@@ -18,7 +18,7 @@ namespace SeleniumDemoTwo.POM
             PageFactory.InitElements(PropertiesCollection.Driver, this);
         }
 
-        [FindsBy(How = How.ClassName, Using = "button-1 register-button")]
+        [FindsBy(How = How.ClassName, Using = "register-button")]
         public IWebElement BtnRegister { get; set; }
 
         [FindsBy(How = How.ClassName, Using = "email")]
@@ -27,13 +27,16 @@ namespace SeleniumDemoTwo.POM
         [FindsBy(How = How.ClassName, Using = "password")]
         public IWebElement TxtPasswrd { get; set; }
 
-        [FindsBy(How = How.ClassName, Using = "button-1 login-button")]
+        [FindsBy(How = How.ClassName, Using = "login-button")]
         public IWebElement BtnLogin { get; set; }
 
         //method to click register and launch register page
         public RegisterPage Register()
         {
             BtnRegister.Click();
+
+            //return a new instance of RegisterPage()
+            return new RegisterPage();
         }
     }
 }
