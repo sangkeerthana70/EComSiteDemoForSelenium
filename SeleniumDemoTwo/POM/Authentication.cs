@@ -18,7 +18,7 @@ namespace SeleniumDemoTwo.POM
             PageFactory.InitElements(PropertiesCollection.Driver, this);
         }
 
-        [FindsBy(How = How.ClassName, Using = "register-button")]
+        [FindsBy(How = How.ClassName, Using = "ico-register")]
         public IWebElement BtnRegister { get; set; }
 
         [FindsBy(How = How.ClassName, Using = "email")]

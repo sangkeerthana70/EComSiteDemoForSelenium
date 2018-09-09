@@ -28,6 +28,13 @@ namespace SeleniumDemoTwo.POM
         public IWebElement BtnLogIn { get; set; }
 
         //method to login
+        public void Login(string email, string passwrd)
+        {
+            TxtEmail.SendKeys(email);
+            TxtPasswrd.SendKeys(passwrd);
+            BtnLogIn.Click();
+            //return new WelcomePage();
+        }
 
     }
 }

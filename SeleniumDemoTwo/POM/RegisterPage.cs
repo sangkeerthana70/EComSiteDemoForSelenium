@@ -30,7 +30,7 @@ namespace SeleniumDemoTwo.POM
         [FindsBy(How = How.Name, Using = "LastName")]
         public IWebElement TxtLastName { get; set; }
 
-        [FindsBy(How = How.Name, Using = "DateOfBirthday")]
+        [FindsBy(How = How.Name, Using = "DateOfBirthDay")]
         public IWebElement SelectDay { get; set; }
 
         [FindsBy(How = How.Name, Using = "DateOfBirthMonth")]
