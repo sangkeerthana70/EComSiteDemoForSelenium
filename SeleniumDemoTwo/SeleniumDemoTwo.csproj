@@ -53,8 +53,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="POM\Authentication.cs" />
+    <Compile Include="POM\MyAccountPage.cs" />
     <Compile Include="POM\RegisterPage.cs" />
     <Compile Include="PropertiesCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
