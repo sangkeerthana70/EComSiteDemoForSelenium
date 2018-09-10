@@ -30,11 +30,16 @@ namespace SeleniumDemoTwo.TestCases
         public void ExecuteTest()
         {
             
-            Authentication authentication = new Authentication();
+            WelcomePage welcome = new WelcomePage();
             Console.WriteLine("Click to register");
-            RegisterPage register = authentication.Register();
-            MyAccountPage login = register.SignIn("Anu", "Kumar", 11, "December", 2002, "asangeethu@yahoo.com","@nuK1978", "@nuK1978");
+            RegisterPage register = welcome.Register();
+            MyAccountPage login = register.Register("Anu", "Sang", 11, "December", 2002, "asangeethu@yahoo.com","@nuK1978");
+            Console.WriteLine("Registration done");
+            PropertiesCollection.Driver.FindElement(By.ClassName("ico-login"));
+            System.Threading.Thread.Sleep(5000);
+            welcome = new WelcomePage();
             login.Login("asangeethu@yahoo.com", "@nuK1978");
+            Console.WriteLine("Login done");
         }
     }
 }

@@ -53,7 +53,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="POM\Authentication.cs" />
+    <Compile Include="POM\RegisteredSuccess.cs" />
+    <Compile Include="POM\StorePage.cs" />
+    <Compile Include="POM\WelcomePage.cs" />
     <Compile Include="POM\MyAccountPage.cs" />
     <Compile Include="POM\RegisterPage.cs" />
     <Compile Include="PropertiesCollection.cs" />

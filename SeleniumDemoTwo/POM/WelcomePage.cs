@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace SeleniumDemoTwo.POM
 {
-    public class Authentication
+    public class WelcomePage
     {
         [Obsolete("Use newMethod instead", false)]//modify the code to use the Obsolete atrribute as PageFactory was deprecated
 
         //initialize page object using constructor
-        public Authentication()
+        public WelcomePage()
         {
             PageFactory.InitElements(PropertiesCollection.Driver, this);
         }
@@ -37,6 +37,14 @@ namespace SeleniumDemoTwo.POM
 
             //return a new instance of RegisterPage()
             return new RegisterPage();
+        }
+
+        public StorePage Login(string email, string password)
+        {
+            TxtEmail.SendKeys(email);
+            TxtPasswrd.SendKeys(password);
+            BtnLogin.Click();
+            return new StorePage();
         }
     }
 }

@@ -52,7 +52,7 @@ namespace SeleniumDemoTwo.POM
         public IWebElement BtnRegister { get; set; }
 
         //method to fill register form
-        public MyAccountPage SignIn(string fname, string lname, int date, string month, int year, string email, string passwrd, string confirmpasswrd)
+        public MyAccountPage Register(string fname, string lname, int date, string month, int year, string email, string passwrd)
         {
             TxtFirstName.SendKeys(fname);
             TxtLastName.SendKeys(lname);
@@ -61,9 +61,9 @@ namespace SeleniumDemoTwo.POM
             SelectYear.SendKeys(year.ToString());
             TxtEmail.SendKeys(email);
             TxtPasswrd.SendKeys(passwrd);
-            TxtConfirmPasswrd.SendKeys(confirmpasswrd);
+            TxtConfirmPasswrd.SendKeys(passwrd);
             BtnRegister.Click();
-
+            Console.WriteLine("Registering using MyAccountPage.SignIn");
             return new MyAccountPage();
         }
     }
