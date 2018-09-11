@@ -51,8 +51,10 @@ namespace SeleniumDemoTwo.POM
         [FindsBy(How = How.Id, Using = "register-button")]
         public IWebElement BtnRegister { get; set; }
 
+        public IWebElement BtnContinue { get; set; }
+
         //method to fill register form
-        public MyAccountPage Register(string fname, string lname, int date, string month, int year, string email, string passwrd)
+        public IWebElement Register(string fname, string lname, int date, string month, int year, string email, string passwrd)
         {
             TxtFirstName.SendKeys(fname);
             TxtLastName.SendKeys(lname);
@@ -63,8 +65,17 @@ namespace SeleniumDemoTwo.POM
             TxtPasswrd.SendKeys(passwrd);
             TxtConfirmPasswrd.SendKeys(passwrd);
             BtnRegister.Click();
-            Console.WriteLine("Registering using MyAccountPage.SignIn");
-            return new MyAccountPage();
+            Console.WriteLine("Registering using MyAccountPage.Register");
+            try
+            {
+                BtnContinue = PropertiesCollection.Driver.FindElement(By.Name("register-continue"));
+            }
+            catch (OpenQA.Selenium.NoSuchElementException)
+            {
+                BtnContinue = null;
+            }
+            Console.WriteLine(BtnContinue);
+            return BtnContinue;
         }
     }
 }

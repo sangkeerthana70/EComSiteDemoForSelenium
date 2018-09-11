@@ -27,20 +27,57 @@ namespace SeleniumDemoTwo.TestCases
         }
 
         [Test]
-        public void ExecuteTest()
+        public void TestRegisterSuccess()
         {
-            
+
             WelcomePage welcome = new WelcomePage();
             Console.WriteLine("Click to register");
             RegisterPage register = welcome.Register();
-            MyAccountPage login = register.Register("Anu", "Sang", 11, "December", 2002, "asangeethu@yahoo.com","@nuK1978");
-            Console.WriteLine("Registration done");
+            IWebElement BtnContinue = register.Register("Anu", "Sang", 11, "December", 2002, "abd@123.com", "@nuK1978");
+            Assert.IsFalse(BtnContinue == null);
+        }
+
+        [Test]
+        public void TestRegisterExistingEmail()
+        {
+            WelcomePage welcome = new WelcomePage();
+            Console.WriteLine("Click to register");
+            RegisterPage register = welcome.Register();
+            IWebElement BtnContinue = register.Register("Anu", "Sang", 11, "December", 2002, "abd@123.com", "@nuK1978");
+            Assert.IsTrue(BtnContinue == null);
+        }
+        [Test]
+        public void TestRegisterRequiredElements()
+        {
+            WelcomePage welcome = new WelcomePage();
+            Console.WriteLine("Click to register");
+            RegisterPage register = welcome.Register();
+            IWebElement BtnContinue = register.Register("Anu", "Sang", 11, "December", 2002, "abd@123.com", "@nuK1978");
+            Assert.IsTrue(BtnContinue == null);
+        }
+
+        [Test]
+        public void LoginReturningCustomer()
+        { 
             //click login for returning customer
             PropertiesCollection.Driver.FindElement(By.ClassName("ico-login"));
             System.Threading.Thread.Sleep(5000);
-            welcome = new WelcomePage();
-            login.Login("asangeethu@yahoo.com", "@nuK1978");
+            WelcomePage welcome = new WelcomePage();
+
+            welcome.Login("asangeethu@yahoo.com", "@nuK1978");
             Console.WriteLine("Login done");
         }
+
+        /*
+        [Test]
+        public void Re-Register()
+        {
+            WelcomePage welcome = new WelcomePage();
+            RegisterPage register = welcome.Register();
+            MyAccountpage login = register.Register("Anu", "Sang", 11, "December", 2002, "asangeethu@yahoo.com", "@nuK1978");
+
+        }
+        */
+        
     }
 }
