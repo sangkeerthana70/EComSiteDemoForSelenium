@@ -43,7 +43,7 @@ namespace SeleniumDemoTwo.TestCases
             WelcomePage welcome = new WelcomePage();
             Console.WriteLine("Click to register");
             RegisterPage register = welcome.Register();
-            IWebElement BtnContinue = register.Register("", "Sang", 11, "December", 2002, "abd@123.com", "@nuK1978");
+            IWebElement BtnContinue = register.Register("Anu", "Sang", 11, "December", 2002, "abd@123.com", "@nuK1978");
             Assert.IsTrue(BtnContinue == null);
 
             //Console.WriteLine("The Specified email already exists");
@@ -57,11 +57,19 @@ namespace SeleniumDemoTwo.TestCases
         [Test]
         public void TestRegisterRequiredElements()
         {
+            Console.WriteLine("Test to check if first name field is empty");
             WelcomePage welcome = new WelcomePage();
             Console.WriteLine("Click to register");
             RegisterPage register = welcome.Register();
-            IWebElement BtnContinue = register.Register("Anu", "Sang", 11, "December", 2002, "abd@123.com", "@nuK1978");
+            IWebElement BtnContinue = register.Register("", "Sang", 11, "December", 2002, "abd@123.com", "@nuK1978");
             Assert.IsTrue(BtnContinue == null);
+
+            Console.WriteLine("First name is required.");
+            IWebElement reqFirstName = PropertiesCollection.Driver.FindElement(By.Id("FirstName-error"));
+            Console.WriteLine(reqFirstName);
+            Boolean Message = reqFirstName.Text.Contains("First name is required.");
+            Console.WriteLine(Message);
+            Assert.IsTrue(Message);
         }
 
         [Test]
@@ -76,11 +84,7 @@ namespace SeleniumDemoTwo.TestCases
             Console.WriteLine("Login done");
         }
 
-        [Test]
-        public void TestCheckRequiredFieldsForRegister()
-        {
-
-        }
+        
         /*
         [Test]
         public void Re-Register()
