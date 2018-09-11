@@ -33,7 +33,7 @@ namespace SeleniumDemoTwo.TestCases
             WelcomePage welcome = new WelcomePage();
             Console.WriteLine("Click to register");
             RegisterPage register = welcome.Register();
-            IWebElement BtnContinue = register.Register("Anu", "Sang", 11, "December", 2002, "abd@123.com", "@nuK1978");
+            IWebElement BtnContinue = register.Register("Anu", "Sang", 11, "December", 2002, "pop@123.com", "@nuK1978");
             Assert.IsFalse(BtnContinue == null);
         }
 
@@ -43,9 +43,17 @@ namespace SeleniumDemoTwo.TestCases
             WelcomePage welcome = new WelcomePage();
             Console.WriteLine("Click to register");
             RegisterPage register = welcome.Register();
-            IWebElement BtnContinue = register.Register("Anu", "Sang", 11, "December", 2002, "abd@123.com", "@nuK1978");
+            IWebElement BtnContinue = register.Register("", "Sang", 11, "December", 2002, "abd@123.com", "@nuK1978");
             Assert.IsTrue(BtnContinue == null);
+
+            //Console.WriteLine("The Specified email already exists");
+            IWebElement errorMessage = PropertiesCollection.Driver.FindElement(By.XPath("/html/body/div[6]/div[3]/div/div/div/div[2]/form/div[1]/ul/li"));
+            Console.WriteLine(errorMessage);
+            Boolean Message = errorMessage.Text.Contains("The specified email already exists");
+            Console.WriteLine(Message);
+            Assert.IsTrue(Message);
         }
+
         [Test]
         public void TestRegisterRequiredElements()
         {
@@ -68,6 +76,11 @@ namespace SeleniumDemoTwo.TestCases
             Console.WriteLine("Login done");
         }
 
+        [Test]
+        public void TestCheckRequiredFieldsForRegister()
+        {
+
+        }
         /*
         [Test]
         public void Re-Register()
