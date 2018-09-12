@@ -55,9 +55,10 @@ namespace SeleniumDemoTwo.TestCases
         }
 
         [Test]
-        public void TestRegisterRequiredElements()
+        public void TestRegisterRequiredElement()
         {
-            Console.WriteLine("Test to check if first name field is empty");
+            // Console.ReadLine();
+            Console.WriteLine("1.Test to check if first name field is empty");
             WelcomePage welcome = new WelcomePage();
             Console.WriteLine("Click to register");
             RegisterPage register = welcome.Register();
@@ -67,9 +68,29 @@ namespace SeleniumDemoTwo.TestCases
             Console.WriteLine("First name is required.");
             IWebElement reqFirstName = PropertiesCollection.Driver.FindElement(By.Id("FirstName-error"));
             Console.WriteLine(reqFirstName);
-            Boolean Message = reqFirstName.Text.Contains("First name is required.");
-            Console.WriteLine(Message);
-            Assert.IsTrue(Message);
+            Boolean FNMessage = reqFirstName.Text.Contains("First name is required.");
+            Console.WriteLine(FNMessage);
+            Assert.IsTrue(FNMessage);
+
+            Console.WriteLine("*******************************");
+            Console.WriteLine("2.Check Last Name is empty");
+            welcome = new WelcomePage();
+            Console.WriteLine("Click to register");
+            register = welcome.Register();
+            BtnContinue = register.Register("Anu", "", 11, "December", 2002, "abd@123.com", "@nuK1978");
+            Assert.IsTrue(BtnContinue == null);
+
+            Console.WriteLine("Last name is required.");
+            IWebElement reqLastName = PropertiesCollection.Driver.FindElement(By.Id("LastName-error"));
+            Console.WriteLine(reqLastName);
+            Boolean LNMessage = reqLastName.Text.Contains("Last name is required.");
+            Console.WriteLine(LNMessage);
+            Assert.IsTrue(LNMessage);
+
+            Console.WriteLine("*******************************");
+            Console.WriteLine("3.Check empty email");
+            welcome = new WelcomePage();
+
         }
 
         [Test]
