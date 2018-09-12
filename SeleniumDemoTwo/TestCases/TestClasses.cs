@@ -155,6 +155,12 @@ namespace SeleniumDemoTwo.TestCases
             Console.WriteLine("Login done");
         }
 
+        [Test]
+        public void ShopItem()
+        {
+
+        }
+
         
         /*
         [Test]
