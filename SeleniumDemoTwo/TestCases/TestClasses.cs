@@ -118,7 +118,7 @@ namespace SeleniumDemoTwo.TestCases
             Console.WriteLine("5.Check  password strength");
             welcome = new WelcomePage();
             register = welcome.Register();
-            BtnContinue = register.Register("Anu", "Sang", 11, "December", 2002, "abd123", "qwert");
+            BtnContinue = register.Register("Anu", "Sang", 11, "December", 2002, "abd@123", "qwert");
 
             Console.WriteLine("The password should have at least 6 characters.");
             IWebElement passwordError = PropertiesCollection.Driver.FindElement(By.Id("Password-error"));
@@ -128,7 +128,17 @@ namespace SeleniumDemoTwo.TestCases
             Assert.IsTrue((BtnContinue == null) && (passwordErrorMessage));
 
             Console.WriteLine("****************************************************************");
-            Console.WriteLine();
+            Console.WriteLine("6.Check empty password");
+            welcome = new WelcomePage();
+            register = welcome.Register();
+            BtnContinue = register.Register("Anu", "Sang", 11, "December", 2002, "abd@123", "");
+
+            Console.WriteLine("Password is required.");
+            IWebElement emptyPasswrd = PropertiesCollection.Driver.FindElement(By.Id("Password-error"));
+            Console.WriteLine(emptyPasswrd);
+            Boolean emptyPasswrdMessage = emptyPasswrd.Text.Contains("Password is required.");
+            Console.WriteLine(emptyPasswrdMessage);
+            Assert.IsTrue((BtnContinue == null) && (emptyPasswrdMessage));
 
 
         }
