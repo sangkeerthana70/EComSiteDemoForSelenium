@@ -33,7 +33,7 @@ namespace SeleniumDemoTwo.TestCases
             WelcomePage welcome = new WelcomePage();
             Console.WriteLine("Click to register");
             RegisterPage register = welcome.Register();
-            IWebElement BtnContinue = register.Register("Anu", "Sang", 11, "December", 2002, "pop@123.com", "@nuK1978");
+            IWebElement BtnContinue = register.Register("Anu", "Sang", 11, "December", 2002, "tom@123.com", "@nuK1978");
             Assert.IsFalse(BtnContinue == null);
         }
 
@@ -58,7 +58,7 @@ namespace SeleniumDemoTwo.TestCases
         public void TestRegisterRequiredElement()
         {
             // Console.ReadLine();
-            Console.WriteLine("1.Test to check if first name field is empty");
+            Console.WriteLine("1.Test to check if First name field is empty");
             WelcomePage welcome = new WelcomePage();
             Console.WriteLine("Click to register");
             RegisterPage register = welcome.Register();
@@ -72,8 +72,8 @@ namespace SeleniumDemoTwo.TestCases
             Console.WriteLine(FNMessage);
             Assert.IsTrue(FNMessage);
 
-            Console.WriteLine("*******************************");
-            Console.WriteLine("2.Check Last Name is empty");
+            Console.WriteLine("********************************************************************");
+            Console.WriteLine("2.Test to Check if Last Name field is empty");
             welcome = new WelcomePage();
             Console.WriteLine("Click to register");
             register = welcome.Register();
@@ -86,10 +86,50 @@ namespace SeleniumDemoTwo.TestCases
             Boolean LNMessage = reqLastName.Text.Contains("Last name is required.");
             Console.WriteLine(LNMessage);
             Assert.IsTrue(LNMessage);
-
-            Console.WriteLine("*******************************");
-            Console.WriteLine("3.Check empty email");
+            
+            Console.WriteLine("****************************************************************");
+            Console.WriteLine("3.Check for empty email field");
             welcome = new WelcomePage();
+            register = welcome.Register();
+            BtnContinue = register.Register("Anu", "Sang", 11, "December", 2002, "", "@nuK1978");
+
+            Console.WriteLine("Email is required.");
+            IWebElement reqEmailField = PropertiesCollection.Driver.FindElement(By.Id("Email-error"));
+            Console.WriteLine(reqEmailField);
+            Boolean EmailMessage = reqEmailField.Text.Contains("Email is required.");
+            Console.WriteLine(EmailMessage);
+            Assert.IsTrue((BtnContinue == null) && (EmailMessage));
+
+
+            Console.WriteLine("****************************************************************");
+            Console.WriteLine("4.Check for invalid Email");
+            welcome = new WelcomePage();
+            register = welcome.Register();
+            BtnContinue = register.Register("Anu", "Sang", 11, "December", 2002, "abd123", "@nuK1978");
+
+            Console.WriteLine("Wrong email");
+            IWebElement wrongEmail = PropertiesCollection.Driver.FindElement(By.Id("Email-error"));
+            Console.WriteLine(wrongEmail);
+            Boolean WrongEmailMessage = wrongEmail.Text.Contains("Wrong email");
+            Console.WriteLine(WrongEmailMessage);
+            Assert.IsTrue((BtnContinue == null) && (WrongEmailMessage));
+
+            Console.WriteLine("****************************************************************");
+            Console.WriteLine("5.Check  password strength");
+            welcome = new WelcomePage();
+            register = welcome.Register();
+            BtnContinue = register.Register("Anu", "Sang", 11, "December", 2002, "abd123", "qwert");
+
+            Console.WriteLine("The password should have at least 6 characters.");
+            IWebElement passwordError = PropertiesCollection.Driver.FindElement(By.Id("Password-error"));
+            Console.WriteLine(passwordError);
+            Boolean passwordErrorMessage = passwordError.Text.Contains("The password should have at least 6 characters.");
+            Console.WriteLine(passwordErrorMessage);
+            Assert.IsTrue((BtnContinue == null) && (passwordErrorMessage));
+
+            Console.WriteLine("****************************************************************");
+            Console.WriteLine();
+
 
         }
 
