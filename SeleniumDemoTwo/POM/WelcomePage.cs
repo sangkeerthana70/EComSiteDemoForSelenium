@@ -41,7 +41,10 @@ namespace SeleniumDemoTwo.POM
 
         public StorePage Login(string email, string password)
         {
+            Console.WriteLine("Debug: Inside Login()");
+            Console.WriteLine("Debug" + TxtEmail);
             TxtEmail.SendKeys(email);
+            Console.WriteLine("Sending email to login");
             TxtPasswrd.SendKeys(password);
             BtnLogin.Click();
             return new StorePage();
