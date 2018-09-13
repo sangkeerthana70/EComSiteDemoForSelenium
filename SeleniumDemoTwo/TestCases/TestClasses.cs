@@ -21,7 +21,7 @@ namespace SeleniumDemoTwo.TestCases
 
             PropertiesCollection.Driver.Manage().Window.Maximize();
             //click login on welcome page
-            PropertiesCollection.Driver.FindElement(By.ClassName("ico-login"));
+            PropertiesCollection.Driver.FindElement(By.ClassName("ico-login")).Click();
 
             Console.WriteLine("Opened URL and clicked Welcome Page");
         }
@@ -153,25 +153,19 @@ namespace SeleniumDemoTwo.TestCases
 
             welcome.Login("asangeethu@yahoo.com", "@nuK1978");
             Console.WriteLine("Login done");
+
+
         }
 
         [Test]
         public void ShopItem()
         {
-
-        }
-
-        
-        /*
-        [Test]
-        public void Re-Register()
-        {
             WelcomePage welcome = new WelcomePage();
-            RegisterPage register = welcome.Register();
-            MyAccountpage login = register.Register("Anu", "Sang", 11, "December", 2002, "asangeethu@yahoo.com", "@nuK1978");
+
+            StorePage shop = welcome.Login("asangeethu@yahoo.com", "@nuK1978");
+            Console.WriteLine("Login done");           
+            shop.ShopProduct();
 
         }
-        */
-        
     }
 }
