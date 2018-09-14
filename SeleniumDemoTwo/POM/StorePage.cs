@@ -23,10 +23,18 @@ namespace SeleniumDemoTwo.POM
         [FindsBy(How = How.XPath, Using = "/html/body/div[6]/div[3]/div/div/div/div/div[4]/div[2]/div[2]/div/div[2]/div[3]/div[2]/input[1]")]
         IWebElement AddCart { get; set; }
 
+        IWebElement AddCart2 { get; set; }
+
+
+            
         //shop item
         public void ShopProduct()
         {
             AddCart.Click();
+            System.Threading.Thread.Sleep(5000);
+            PropertiesCollection.Driver.FindElement(By.Id("add-to-cart-button-4")).Click();
+
+
         }
     }
 

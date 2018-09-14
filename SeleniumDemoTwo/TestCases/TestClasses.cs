@@ -57,7 +57,6 @@ namespace SeleniumDemoTwo.TestCases
         [Test]
         public void TestRegisterRequiredElement()
         {
-            // Console.ReadLine();
             Console.WriteLine("1.Test to check if First name field is empty");
             WelcomePage welcome = new WelcomePage();
             Console.WriteLine("Click to register");
@@ -163,9 +162,12 @@ namespace SeleniumDemoTwo.TestCases
             WelcomePage welcome = new WelcomePage();
 
             StorePage shop = welcome.Login("asangeethu@yahoo.com", "@nuK1978");
-            Console.WriteLine("Login done");           
+            Console.WriteLine("Login done");
+             
             shop.ShopProduct();
+
             Console.WriteLine("add product to cart");
+            IWebElement AddCart2;
 
         }
     }
