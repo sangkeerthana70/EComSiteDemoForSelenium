@@ -165,6 +165,7 @@ namespace SeleniumDemoTwo.TestCases
             StorePage shop = welcome.Login("asangeethu@yahoo.com", "@nuK1978");
             Console.WriteLine("Login done");           
             shop.ShopProduct();
+            Console.WriteLine("add product to cart");
 
         }
     }

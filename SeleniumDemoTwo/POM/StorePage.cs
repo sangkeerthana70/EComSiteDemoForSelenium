@@ -18,10 +18,9 @@ namespace SeleniumDemoTwo.POM
             PageFactory.InitElements(PropertiesCollection.Driver, this);
         }
 
-        [FindsBy(How = How.ClassName, Using = "product-item")]
-        IWebElement FeaturedProducts { get; set; }
+       
 
-        [FindsBy(How = How.ClassName, Using = "add-to-cart-button")]
+        [FindsBy(How = How.XPath, Using = "/html/body/div[6]/div[3]/div/div/div/div/div[4]/div[2]/div[2]/div/div[2]/div[3]/div[2]/input[1]")]
         IWebElement AddCart { get; set; }
 
         //shop item
