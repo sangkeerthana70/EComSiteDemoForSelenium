@@ -17,11 +17,15 @@ namespace SeleniumDemoTwo.POM
         {
             PageFactory.InitElements(PropertiesCollection.Driver, this);
         }
-        [FindsBy(How = How.ClassName, Using = "checkout")]
+        [FindsBy(How = How.Name, Using = "checkout")]
         IWebElement CheckoutButton { get; set; }
+
+        [FindsBy(How = How.Id, Using = "termsofservice")]
+        IWebElement CheckBox { get; set; }
 
         public void ClickCheckout()
         {
+            CheckBox.Click();
             CheckoutButton.Click();
         }
     }
