@@ -31,13 +31,14 @@ namespace SeleniumDemoTwo.POM
 
             
         //shop item
-        public void ShopProduct()
+        public Checkout ShopProduct()
         {
             AddCart.Click();
             System.Threading.Thread.Sleep(5000);
             PropertiesCollection.Driver.FindElement(By.Id("add-to-cart-button-4")).Click();
             ShoppingCart.Click();
             Console.WriteLine("Click on shopping cart");
+            return new Checkout();
 
         }
     }
