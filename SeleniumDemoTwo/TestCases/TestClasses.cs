@@ -163,11 +163,24 @@ namespace SeleniumDemoTwo.TestCases
 
             StorePage shop = welcome.Login("asangeethu@yahoo.com", "@nuK1978");
             Console.WriteLine("Login done");
-             
+            Console.WriteLine("add product to cart");
             shop.ShopProduct();
 
+            
+            //IWebElement AddCart2;
+        }
+
+        [Test]
+        public void Checkout()
+        {
+            WelcomePage welcome = new WelcomePage();
+
+            StorePage store = welcome.Login("asangeethu@yahoo.com", "@nuK1978");
+            Console.WriteLine("Login done");
             Console.WriteLine("add product to cart");
-            IWebElement AddCart2;
+            Checkout shoppingCart = store.ShopProduct();
+            shoppingCart.ClickCheckout();
+            Console.WriteLine("Click checkout");
 
         }
     }
