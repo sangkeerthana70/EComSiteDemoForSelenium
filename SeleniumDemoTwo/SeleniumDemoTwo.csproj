@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="POM\Checkout.cs" />
+    <Compile Include="POM\FinalCheckout.cs" />
     <Compile Include="POM\StorePage.cs" />
     <Compile Include="POM\WelcomePage.cs" />
     <Compile Include="POM\MyAccountPage.cs" />
