@@ -23,10 +23,11 @@ namespace SeleniumDemoTwo.POM
         [FindsBy(How = How.Id, Using = "termsofservice")]
         IWebElement CheckBox { get; set; }
 
-        public void ClickCheckout()
+        public FinalCheckout ClickCheckout()
         {
             CheckBox.Click();
             CheckoutButton.Click();
+            return new FinalCheckout();
         }
     }
 }
