@@ -42,7 +42,7 @@ namespace SeleniumDemoTwo.POM
         [FindsBy(How = How.Id, Using = "BillingNewAddress_PhoneNumber")]
         IWebElement PhoneNumber { get; set; }
 
-
+        [FindsBy(How = How.ClassName, Using = "button-1 new-address-next-step-button")]
         IWebElement BtnContinue { get; set; }
     }
 }
